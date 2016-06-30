@@ -1,0 +1,10 @@
+{% extends 'root.html' %}
+{% load censor %}
+{% block content %}
+<table>
+    <tr><th>Author</th><th>E-mail Address</th><th>Submitted</th><th>Elapsed Time</th><th>Solution</th></tr>
+    {% for entry in results %}
+    <tr><td>{{  entry.name }}</td><td>{{ entry.email }}</td><td>{{ entry.stop }}</td><td>{{  entry.duration}}</td><td><pre>{{entry.source}}</pre></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

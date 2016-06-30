@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Romax Software Deptartment FizzBuzz Challenge!</title>
+    <script src="{% static "fb/jquery-2.0.0.js" %}"></script>
+    <script src="{% static "fb/jquery-ui.js" %}"></script>
+    <link rel="stylesheet" href="{% static "fb/jquery-ui.css" %}" />
+    <link rel="stylesheet" href="{% static "fb/fb.css" %}" />
+    {% block extra_header %} {% endblock %}
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>

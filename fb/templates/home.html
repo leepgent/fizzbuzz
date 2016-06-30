@@ -1,0 +1,67 @@
+{% extends "root.html" %}
+{% load staticfiles %}
+
+{% block extra_header %}
+    <script src="{% static "fb/lib/codemirror.js" %}"></script>
+    <link rel="stylesheet" href="{% static "fb/lib/codemirror.css" %}" />
+    <script src="{% static "fb/mode/javascript/javascript.js" %}"></script>
+    <script src="{% static "fb/fb.js" %}"></script>
+{% endblock  %}
+
+{% block content %}
+
+	<div class="controls">
+	    	<button role="button" type="button" id="check">Try it!</button>
+			<button role="button" type="button" id="cheat">Give Up!</button>
+	</div>
+
+	<form>
+	    <textarea id="source" >	/*
+	Complete this JavaScript function such that it returns the numbers from 1 to 100.
+	But for multiples of three return "Fizz" instead of the number and for the multiples of five return "Buzz".
+	For numbers which are multiples of both three and five, return "FizzBuzz"."
+    Do not change the function signature.
+	*/
+	
+	function fizzbuzz() {
+	    var results = [ ];
+	    results.push('foo');
+	    return results;
+	}</textarea>
+
+	</form>
+
+	<div id="popup" title="Romax FizzBuzz"></div>
+
+	<script type="application/javascript">
+	$(function() {
+	    $("#popup").dialog({
+	        modal: true,
+	        autoOpen: false,
+		width: 450,
+	        buttons: {
+	            "OK": function() {
+	                $(this).dialog("close");
+	            }
+	        }
+	    });
+	    var text_area = document.getElementById("source");
+	    var editor = CodeMirror.fromTextArea(text_area, {
+	        mode: "javascript",
+	        lineNumbers: true
+	        });
+	
+	    $("#check").button().click(function(evt) {
+	        go(editor, "{% url 'fb:check' %}", {{ entry.id }}, '{{ entry.email }}');
+	    });
+	    /*
+	    $("#quit").button().click(function(evt) {
+	        document.location.replace("{% url 'fb:home' %}" );
+	    });
+	    */
+	    $("#cheat").button().click(function(evt) {
+		document.location.replace("{% url 'fb:results' %}");
+	    });
+	});
+	</script>
+{% endblock %}

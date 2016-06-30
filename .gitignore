@@ -1,0 +1,8 @@
+*.pyc
+*.pid
+*.db
+*.sqlite3
+.idea
+fizzbuzz/staticfiles
+.env
+

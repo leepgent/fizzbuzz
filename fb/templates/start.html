@@ -1,0 +1,32 @@
+{% extends "root.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="branding"></div>
+    
+    <div class="intro-content wrap">
+	    
+	    <p>Your mission is to demonstrate competence in basic software engineering by writing a program to complete a <a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">very well-known and simple task</a>:</p>
+	    
+	    <ul>
+		    <li><span>Write a program that prints the numbers from 1 to 100.</span></li>
+		    <li><span>For the multiples of 3, print "Fizz" instead of that number.</span></li>
+		    <li><span>For the multiples of 5, print "Buzz" instead of that number.</span></li>
+		    <li><span>For the multiples of both 5 and 3, print "FizzBuzz" instead of that number.</span></li>
+	    </ul>
+	    
+	    <p>Think you've got the chops? Enter your name and e-mail address and whack 'Begin!'. You'll be timed, and the best time wins a free trip to Starbucks.</p><p>Your solution will be in JavaScript, but don't worry - it looks a lot like C, C++, C# or Java and there'll be someone around to help out. Be sure to read the requirements thoroughly and make use of the 'template' code provided. Good luck!</p>
+	    
+	    <form action="{% url 'fb:start' %}" method="POST">
+		    {% csrf_token %}
+		    <fieldset>
+		        <input id="name" name="name" type="text" placeholder="Your name"/>
+		        <input id="email" name="email" type="email" placeholder="Your e-mail address"/>
+		        <input type="submit" value="Begin"/>
+		    </fieldset>
+	    </form>
+	    
+    </div>
+
+{% endblock %}
