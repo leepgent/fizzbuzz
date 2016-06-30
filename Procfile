@@ -1,1 +1,1 @@
-web: gunicorn leedotgent.wsgi --log-file -
+web: gunicorn fizzbuzz.wsgi --log-file -
